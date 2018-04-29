@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BigRock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MediumRock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SmallRock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=6]
+
+[node name="Node2D" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+Bullet = ExtResource( 2 )
+BigRock = ExtResource( 3 )
+MediumRock = ExtResource( 4 )
+SmallRock = ExtResource( 5 )
+ROCK_SPEED = 25
+BULLET_SPEED = 150
+MAX_ROCKS = 5
+
+[node name="Player" parent="." index="0" instance=ExtResource( 6 )]
+
+[node name="ShootTimer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 0.25
+one_shot = true
+autostart = false
+
+
