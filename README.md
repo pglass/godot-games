@@ -1,6 +1,5 @@
+See [HERE](https://games.pglbutt.com) for live versions of all these games.
+
 This is a repo of games I made while learning [Godot](https://godotengine.org/).
 
-The projects are made with Godot 3 (version 3.0.2).
-
-The games are published [here](https://games.pglbutt.com) using Godot's HTML5
-exporter.
+The projects require Godot 3 (version 3.0.2).
