@@ -1,6 +1,6 @@
 GODOT := /Applications/Godot.app/Contents/MacOS/Godot
 
-DIRS = asteroids
+DIRS = asteroids lightsout
 
 .PHONY: $(DIRS) index.html
 
