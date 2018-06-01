@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Terrain2.gd" type="Script" id=1]
+
+[node name="Terrain2" type="Node2D"]
+
+script = ExtResource( 1 )
+TERRAIN_COLOR = Color( 0.2, 0.8, 0.2, 1 )
+CLEAR_COLOR = Color( 0, 0, 0, 0 )
+
+

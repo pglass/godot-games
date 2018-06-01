@@ -8,21 +8,19 @@
 custom_solver_bias = 0.0
 extents = Vector2( 5.05, 5.025 )
 
-[node name="Tank" type="Area2D"]
+[node name="Tank" type="KinematicBody2D" index="0"]
 
 input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+collision_layer = 1
+collision_mask = 3
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 Bullet = ExtResource( 2 )
 MIN_POWER = 1
 MAX_POWER = 1000
-ROTATE_SPEED = 0.2
-POWER_DELTA = 1
+ROTATE_SPEED = 0.3
+POWER_DELTA = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="." index="0"]
 

@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Explosion.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 0.704897, 0.711526 )
+extents = Vector2( 1.42006, 1.42238 )
 
-[node name="Bullet" type="RigidBody2D" index="0"]
+[node name="Bullet" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -17,14 +20,17 @@ bounce = 0.0
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
+contacts_reported = 2
+contact_monitor = true
 sleeping = false
 can_sleep = true
 linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+Explosion = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="." index="0"]
 
@@ -46,5 +52,7 @@ invert_border = 100.0
 rotation = 0.785398
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 
 

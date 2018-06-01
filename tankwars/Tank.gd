@@ -1,31 +1,29 @@
-extends Area2D
+extends KinematicBody2D
 
 export (PackedScene) var Bullet
 export (int) var MIN_POWER = 1
 export (int) var MAX_POWER = 1000
-export (int) var ROTATE_SPEED = 0.2
-export (int) var POWER_DELTA = 1
+export (int) var ROTATE_SPEED = 0.3
+export (int) var POWER_DELTA = 2
 var is_active_tank = true
-var power = 100
+var power = 120
+var windowsize
 
 func _ready():
-	var windowsize = get_viewport_rect().size
-	self.position.x = windowsize.x / 2
-	self.position.y = windowsize.y / 2
-
+	windowsize = get_viewport_rect().size
 	# The gun/turret is a Line2D. It points along the +x axis
 	# so that the Line2D.rotation can be used as the angle to
 	# at which bullets are fired.
 	#
 	# But we want the to point upwards initially, so we apply
 	# this initial rotation.
-	self.rotate_gun(-PI / 2)
+	self.rotate_gun(-PI / 3)
 
 func _process(delta):
 	# If shift is pressed, move things more quickly
 	var action_quickness = 1
 	if Input.is_action_pressed("ui_shift_modifier"):
-		action_quickness = 4
+		action_quickness = 5
 
 	# Rotate the turret
 	var rot = 0
@@ -48,6 +46,11 @@ func _process(delta):
 		var impulse = Vector2(self.power, 0).rotated($Line2D.rotation)
 		bullet.apply_impulse(Vector2(), impulse)
 		add_child(bullet)
+
+func _physics_process(delta):
+	# Cause the tank to fall
+	if position.y + $CollisionShape2D.get_shape().extents.y / 2 <= windowsize.y:
+		move_and_collide(Vector2(0, 4))
 
 func rotate_gun(d_angle):
 	$Line2D.rotate(d_angle)

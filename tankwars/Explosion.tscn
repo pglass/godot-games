@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Explosion.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="Explosion" type="RigidBody2D"]
+
+input_pickable = false
+collision_layer = 8
+collision_mask = 2
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 999999
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+EXPLOSION_COLOR = Color( 0.8, 0.2, 0.3, 1 )
+MIN_SIZE = 1
+MAX_SIZE = 20
+GROWTH_RATE = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_Explosion_body_entered"]
+
+
